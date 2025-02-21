@@ -29,39 +29,39 @@ class MainActivity : ComponentActivity() {
 
         webView.settings.apply {
             javaScriptEnabled = true // Enable JavaScript
-            domStorageEnabled = true // Enable Local Storage & IndexedDB
-            cacheMode = WebSettings.LOAD_NO_CACHE // Disable cache to force fresh content
-            mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW // Allow HTTP/HTTPS mixed content
-            allowFileAccess = true
-            allowContentAccess = true
-            useWideViewPort = true
-            loadWithOverviewMode = true
-            javaScriptCanOpenWindowsAutomatically = true
-            setSupportMultipleWindows(true)
-            databaseEnabled = true
-            setSupportZoom(true)
-            builtInZoomControls = true
-            displayZoomControls = false
-            mediaPlaybackRequiresUserGesture = false
+//            domStorageEnabled = true // Enable Local Storage & IndexedDB
+//            cacheMode = WebSettings.LOAD_NO_CACHE // Disable cache to force fresh content
+//            mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW // Allow HTTP/HTTPS mixed content
+//            allowFileAccess = true
+//            allowContentAccess = true
+//            useWideViewPort = true
+//            loadWithOverviewMode = true
+//            javaScriptCanOpenWindowsAutomatically = true
+//            setSupportMultipleWindows(true)
+//            databaseEnabled = true
+//            setSupportZoom(true)
+//            builtInZoomControls = true
+//            displayZoomControls = false
+//            mediaPlaybackRequiresUserGesture = false
         }
 
-        webView.settings.safeBrowsingEnabled = false // Prevents HTTP2 handshake issues
+//        webView.settings.safeBrowsingEnabled = false // Prevents HTTP2 handshake issues
 
-        webView.settings.userAgentString =
-            "Mozilla/5.0 (Linux; Android 9; WebView) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36"
+//        webView.settings.userAgentString =
+//            "Mozilla/5.0 (Linux; Android 9; WebView) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Mobile Safari/537.36"
 
-        webView.clearCache(true)
-        webView.clearHistory()
+//        webView.clearCache(true)
+//        webView.clearHistory()
 
-        CookieManager.getInstance().removeAllCookies(null)
-        CookieManager.getInstance().flush()
+//        CookieManager.getInstance().removeAllCookies(null)
+//        CookieManager.getInstance().flush()
 
         webView.webViewClient = object : WebViewClient() {
-            override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
-                val headers = mapOf("Upgrade-Insecure-Requests" to "1", "Cache-Control" to "no-cache")
-                request?.requestHeaders?.putAll(headers)
-                return super.shouldInterceptRequest(view, request)
-            }
+//            override fun shouldInterceptRequest(view: WebView?, request: WebResourceRequest?): WebResourceResponse? {
+//                val headers = mapOf("Upgrade-Insecure-Requests" to "1", "Cache-Control" to "no-cache")
+//                request?.requestHeaders?.putAll(headers)
+//                return super.shouldInterceptRequest(view, request)
+//            }
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 view?.loadUrl(request?.url.toString())
                 Log.e("request?.url.toString()=  ", request?.url.toString())
@@ -74,7 +74,9 @@ class MainActivity : ComponentActivity() {
                 Log.d("WebView", "Finished loading: $url")
             }
         }
-        WebView.setWebContentsDebuggingEnabled(true)
+
+        // Enable WebView debugging in debug mode only
+            WebView.setWebContentsDebuggingEnabled(true)
 
         webView.loadUrl("https://master.odoo.com/saas_master/demo/")
 
