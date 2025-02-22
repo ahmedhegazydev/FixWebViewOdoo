@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
 
         webView.settings.apply {
             javaScriptEnabled = true // Enable JavaScript
-//            domStorageEnabled = true // Enable Local Storage & IndexedDB
+            domStorageEnabled = true // Enable Local Storage & IndexedDB
 //            cacheMode = WebSettings.LOAD_NO_CACHE // Disable cache to force fresh content
 //            mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW // Allow HTTP/HTTPS mixed content
 //            allowFileAccess = true
@@ -62,13 +62,13 @@ class MainActivity : ComponentActivity() {
 //                request?.requestHeaders?.putAll(headers)
 //                return super.shouldInterceptRequest(view, request)
 //            }
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-                view?.loadUrl(request?.url.toString())
-                Log.e("request?.url.toString()=  ", request?.url.toString())
-//                2025-02-20 15:19:13.837 24376-24376 request?.u...oString()= com.example.fixwebviewissue          E  https://demo3.odoo.com/saas_worker/demo/login?dbname=demo_saas-181_b02957276536_1740057553&user=admin&key=admin&redirect=
-//                2025-02-20 15:19:06.334 24376-24376 request?.u...oString()= com.example.fixwebviewissue          E  https://demo3.odoo.com/saas_worker/demo?user=admin&key=admin&redirect=
-                return true
-            }
+//            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+//                view?.loadUrl(request?.url.toString())
+//                Log.e("request?.url.toString()=  ", request?.url.toString())
+////                2025-02-20 15:19:13.837 24376-24376 request?.u...oString()= com.example.fixwebviewissue          E  https://demo3.odoo.com/saas_worker/demo/login?dbname=demo_saas-181_b02957276536_1740057553&user=admin&key=admin&redirect=
+////                2025-02-20 15:19:06.334 24376-24376 request?.u...oString()= com.example.fixwebviewissue          E  https://demo3.odoo.com/saas_worker/demo?user=admin&key=admin&redirect=
+//                return true
+//            }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 Log.d("WebView", "Finished loading: $url")
